@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'), // Output directory
   },
   resolve: {
-    extensions: ['.ts', '.js'], // Resolve these extensions
+    extensions: ['.ts', '.js','.css'], // Resolve these extensions
   },
   module: {
     rules: [
@@ -18,6 +18,10 @@ module.exports = {
         test: /\.ts$/, // Process TypeScript files
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/, // Process CSS files
+        use: ['style-loader', 'css-loader'], // Apply style-loader and css-loader
       },
     ],
   },
