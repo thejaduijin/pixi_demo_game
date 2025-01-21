@@ -1,9 +1,14 @@
 import { Application, Assets, Sprite } from 'pixi.js';
 import './index.css'
+import { initDevtools } from '@pixi/devtools';
+
+
 (async () => {
     const app = new Application();
-    await app.init({ background: '#1099bb', resizeTo: window });
+    await app.init({ background: '#1099bb', resizeTo: window, backgroundAlpha: 0.5 });
     document.body.appendChild(app.canvas);
+
+    initDevtools(app);
 
     function adjustViewPort() {
         const canvas = app.view;
