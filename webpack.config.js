@@ -33,7 +33,10 @@ module.exports = {
   ],
   devtool: 'source-map', // Enables source maps for debugging
   devServer: {
-    static: './dist', // Serve files from dist folder
+    static: [
+      path.join(__dirname, 'dist'), // Serve files from dist folder
+      path.join(__dirname, 'public')  // Also serve assets from the public folder
+    ],
     open: true, // Automatically open in the browser
     port: 3000, // Port number for the dev server
   },
