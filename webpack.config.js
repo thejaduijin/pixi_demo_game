@@ -23,6 +23,18 @@ module.exports = {
         test: /\.css$/, // Process CSS files
         use: ['style-loader', 'css-loader'], // Apply style-loader and css-loader
       },
+      {
+        test: /\.svg$/, // Add rule for SVG files
+        use: [
+          {
+            loader: 'file-loader', // Use file-loader to import SVGs as files
+            options: {
+              name: '[name].[hash].[ext]', // Naming convention for the SVG files
+              outputPath: 'assets/', // Output the SVGs in an 'assets' folder
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

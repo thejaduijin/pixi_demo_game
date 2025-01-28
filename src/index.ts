@@ -4,12 +4,21 @@ import './index.css'
 import { initDevtools } from '@pixi/devtools';
 import start from './test';
 import { Spine } from 'pixi-spine';
+import { addStars } from './TrainAnimation/addStars';
+import { addMountains } from './TrainAnimation/addmountains';
+import { addTrees } from './TrainAnimation/addTrees';
+import { addGrounds } from './TrainAnimation/addGrounds';
+import { addTrain } from './TrainAnimation/addTrain';
+import { addSmokes } from './TrainAnimation/addSmoke';
+// import { addMoon } from './TrainAnimation/addMoon';
 // import { manifest } from './assets';
 // import { Spine } from "@pixi/spine-pixi";
+const app = new Application();
+const trainContainer = new Container();
+
 
 (async () => {
-    const app = new Application();
-    await app.init({ background: '#1099bb', resizeTo: window, backgroundAlpha: 0.5 });
+    await app.init({ background: '#1099bb', resizeTo: window, backgroundAlpha: 1.5 });
     document.body.appendChild(app.canvas);
 
     await Assets.init({ manifest: "/manifest.json" });
@@ -20,6 +29,14 @@ import { Spine } from 'pixi-spine';
     // loader.load('spineData.json', function (data) {
     //     const spine = new Spine(data);
     // });
+
+    //FIXME - 
+    // const bigWin1 = Spine.from({
+    //     skeleton: "bigWinSkel",  or  json file Alias
+    //     atlas: "bigWinAtlas",
+    // });
+    // bigWin1.state.setAnimation(0, 'animation_Name', true);
+    // this.addChild(bigWin1);
 
 
     Assets.load("bg_animation").then((resource) => {
@@ -112,24 +129,24 @@ import { Spine } from 'pixi-spine';
     // bunny.rotation += 0.1 * time.deltaTime;
     // });
 
-    function resizeBunny() {
+    // function resizeBunny() {
         // bunny.x = app.screen.width / 2;
         // bunny.y = app.screen.height / 2;
-    }
+    // }
 
-    function resizeApp() {
-        app.screen.width = window.innerWidth;
-        app.screen.height = window.innerWidth;
-    }
+    // function resizeApp() {
+    //     app.screen.width = window.innerWidth;
+    //     app.screen.height = window.innerWidth;
+    // }
 
-    function handleResize() {
-        resizeBunny();
-        resizeApp();
-        console.log("handleResize");
-    }
+    // function handleResize() {
+    //     resizeBunny();
+    //     resizeApp();
+    //     console.log("handleResize");
+    // }
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    // handleResize();
+    // window.addEventListener("resize", handleResize);
     // window.removeEventListener("resize", handleResize);
 
     // await Assets.init({ manifest: "/manifest.json" });
@@ -142,5 +159,16 @@ import { Spine } from 'pixi-spine';
     // } catch (error) {
     //     console.error('Error loading assets:', error);
     // }
+
+    function TrainAnimation(){
+        addStars(app);
+        addMountains(app);
+        // addMoon(app)
+        addTrees(app);
+        addGrounds(app)
+        addTrain(app, trainContainer);
+        addSmokes(app,trainContainer)
+    }
+    TrainAnimation();
 })();
 // export default app
