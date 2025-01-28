@@ -11,6 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@pixi/assets": "^7.4.2",
+    "@pixi/core": "^7.4.2",
+    "@pixi/display": "^7.4.2",
+    "@pixi/graphics": "^7.4.2",
+    "@pixi/mesh": "^7.4.2",
+    "@pixi/mesh-extras": "^7.4.2",
+    "@pixi/spine-pixi": "^2.1.1",
+    "@pixi/sprite": "^7.4.2",
+    "pixi-spine": "^4.0.4",
     "pixi.js": "^8.6.6"
   },
   "devDependencies": {

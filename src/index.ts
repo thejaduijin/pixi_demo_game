@@ -1,15 +1,45 @@
+import 'pixi-spine'
 import { Application, Assets, Sprite, Graphics, Text, TextStyle, Container } from 'pixi.js';
 import './index.css'
 import { initDevtools } from '@pixi/devtools';
 import start from './test';
-import { manifest } from './assets';
+import { Spine } from 'pixi-spine';
+// import { manifest } from './assets';
+// import { Spine } from "@pixi/spine-pixi";
 
 (async () => {
     const app = new Application();
     await app.init({ background: '#1099bb', resizeTo: window, backgroundAlpha: 0.5 });
     document.body.appendChild(app.canvas);
 
+    await Assets.init({ manifest: "/manifest.json" });
 
+    // const spineData = loadSpineData();  // Load spine data (JSON or binary)
+    // const spine = new Spine(spineData);
+
+    // loader.load('spineData.json', function (data) {
+    //     const spine = new Spine(data);
+    // });
+
+
+    Assets.load("bg_animation").then((resource) => {
+        console.log("ani", resource);
+        // const animation: any = new Spine(resource.animations.animation.bones);
+
+        // app.stage.addChild(animation);
+
+        // add the animation to the scene and render...
+        // app.stage.addChild(animation);
+
+        // if (animation.state.hasAnimation('run')) {
+        //     // run forever, little boy!
+        //     animation.state.setAnimation(0, 'run', true);
+        //     // dont run too fast
+        //     animation.state.timeScale = 0.1;
+        //     // update yourself
+        //     animation.autoUpdate = true;
+        // }
+    });
 
 
     // const data = await Assets.loadBundle("symbols");
@@ -102,15 +132,15 @@ import { manifest } from './assets';
     window.addEventListener("resize", handleResize);
     // window.removeEventListener("resize", handleResize);
 
-    await Assets.init({ manifest: "/manifest.json" });
+    // await Assets.init({ manifest: "/manifest.json" });
 
-    try {
-        const data = await Assets.loadBundle('animation');
-        console.log('Assets loaded:', data);
-        const a1 = Sprite.from(data.bg_animation);
-        app.stage.addChild(a1);
-    } catch (error) {
-        console.error('Error loading assets:', error);
-    }
+    // try {
+    //     const data = await Assets.loadBundle('animation');
+    //     console.log('Assets loaded:', data);
+    //     const a1 = Sprite.from(data.bg_animation);
+    //     app.stage.addChild(a1);
+    // } catch (error) {
+    //     console.error('Error loading assets:', error);
+    // }
 })();
 // export default app
